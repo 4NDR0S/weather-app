@@ -17,11 +17,20 @@ const imageMap = {
 };
 
 export default function TodayBox() {
-    const { api, main, weather, name, setApi } = useContext(DataContext);
+    const { api, loading, error, changeUnit, unit } = useContext(DataContext);
 
-    // Verifica que weather esté definido y tenga al menos un elemento
+    if (loading) {
+        return <p>Cargando...</p>;
+    }
+
+    if (error) {
+        return <p>Error: {error.message}</p>;
+    }
+
+    const { main, weather, name } = api;
+
     if (!weather || weather.length === 0) {
-        return <p>Loading...</p>;
+        return <p>Sin datos de clima disponibles</p>;
     }
 
     console.log(weather, name);
@@ -42,8 +51,8 @@ export default function TodayBox() {
     return (
         <div className='bg-[#1E213A] w-[400px]'>
             <div className='p-4 flex justify-between'>
-                <div className='bg-[#6E707A] h-[40px] w-[160px] text-center'>
-                    <button>Search for places</button>
+                <div className='bg-[#6E707A] w-[160px] text-center'>
+                    <button className='text-[#E7E7EB] py-2'>Search for places</button>
                 </div>
                 <div className='bg-[#6E707A]'>
                     <button>+</button>
@@ -60,12 +69,28 @@ export default function TodayBox() {
                 <div className='h-[300px] opacity-[10%] w-auto bg-center z-1 mt-[-220px]' style={{ backgroundImage: `url(${weatherBackGround})` }}></div>
 
             </div>
+            
             <div className='text-center'>
-
-                <h1 className='text-white text-[90px]'>{tempEntero}<span className='text-[35px] text-[#A09FB1]'>°F</span></h1>
+                <h1 className='text-white text-[90px]'>{tempEntero}<span className='text-[35px] text-[#A09FB1]'>°{unit === 'imperial' ? 'F' : 'C'}</span></h1>
                 <h2 className='text-[#A09FB1] text-[35px]'>{descriptionWeather}</h2>
-                
                 <p className='text-[#A09FB1] text-[15px]'>{name}</p>
+
+                <div className='flex justify-center space-x-4 mt-4'>
+                <button
+                        onClick={() => changeUnit('metric')}
+                        className={`rounded-full px-2 py-1 ${unit === 'metric' ? 'bg-white text-[#110E3C]' : 'bg-[#6E707A] text-white'}`}
+                        disabled={unit === 'metric'}
+                    >
+                        °C
+                    </button>
+                    <button
+                        onClick={() => changeUnit('imperial')}
+                        className={`rounded-full px-2 py-1 ${unit === 'imperial' ? 'bg-white text-[#110E3C]' : 'bg-[#6E707A] text-white'}`}
+                        disabled={unit === 'imperial'}
+                    >
+                        °F
+                    </button>
+                </div>
             </div>
 
         </div>
