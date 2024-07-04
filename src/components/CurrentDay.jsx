@@ -5,7 +5,7 @@ export default function CurrentDay() {
 
     //obtener el dia de la semana
     const diasSemana = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-    const diaSemana = diasSemana[date.getDate]
+    const diaSemana = diasSemana[date.getDate()]
 
     //obetener el dia del mes
     const day = date.getDate()
@@ -19,6 +19,6 @@ export default function CurrentDay() {
 
 
     return (
-        <p className='text-[#A09FB1]' >Today - {diaSemana} {day} {mesActual}</p>
+        <p className='text-[#88869D] py-4 tracking-[0.1rem] font-medium' >Today  •  {diaSemana} {day}. {mesActual}</p>
     )
 }
