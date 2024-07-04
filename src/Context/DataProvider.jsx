@@ -2,8 +2,8 @@ import React, { createContext, useEffect, useState } from 'react'
 
 const idkey = '1207561af4bd33f3b574041404ab197e'
 
-const lat = '20.42'
-const lon = '-86.92'
+const lat = '-12.04'
+const lon = '-77.02'
 
 export const DataContext = createContext()
 
