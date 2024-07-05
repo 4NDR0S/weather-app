@@ -4,8 +4,8 @@ import RightSide from './components/RightSide'
 
 export default function App() {
   return (
-    <div className=' w-[full]
-    sm:flex'>
+    <div className=' w-full h-full
+    sm:flex sm:h-full'>
     <TodayBox/>
     <RightSide/>
     </div>

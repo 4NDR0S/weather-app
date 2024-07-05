@@ -7,7 +7,8 @@ export default function Humidity() {
     const { main } = api
 
     return (
-        <div className='w-[330px] h-[200px] bg-[#1E213A] text-center p-4'>
+        <div className='w-[330px] h-[200px] bg-[#1E213A] text-center p-4
+        sm:w-[360px]'>
             <h3 className='font-medium text-[#E7E7EB]'>Humidity</h3>
             <div>
                 <h4 className='text-[64px] text-[#E7E7EB] font-bold'>{main.humidity}<span className=' text-[#E7E7EB] text-[36px] font-medium'>%</span></h4>

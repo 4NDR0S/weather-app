@@ -6,7 +6,8 @@ export default function ButtonChangeTemp() {
 
   return (
     <div className='flex justify-center space-x-4 py-4
-    sm:justify-end sm:px-[10%]'>
+    left-0 right-0 mx-auto
+    sm:justify-end sm:max-w-[780px] sm:pr-5 '>
       <div className={`rounded-full h-10 w-10 flex items-center justify-center ${unit === 'metric' ? 'bg-[#E7E7EB] text-[#110E3C]' : 'bg-[#6E707A] text-[#E7E7EB]'}`}>
         <button
           onClick={() => changeUnit('metric')}

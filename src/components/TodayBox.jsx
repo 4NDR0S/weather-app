@@ -6,7 +6,7 @@ const weatherBackGround = '/Cloud-background.png'
 
 
 export default function TodayBox() {
-    const { api, loading, error, changeUnit, unit } = useContext(DataContext);
+    const { api, loading, error, unit } = useContext(DataContext);
 
     if (loading) {
         return <p>Cargando...</p>;

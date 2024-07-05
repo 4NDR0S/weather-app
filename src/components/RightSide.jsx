@@ -13,14 +13,15 @@ export default function RightSide() {
 
       <div className=' left-0 right-0 mx-auto
       flex flex-wrap justify-center
-    sm:w-full sm:px-[14%]'>
+      sm:w-full sm:px-[10%]'>
 
-        <div className='left-0 right-0 mx-auto'>
+        <div className='left-0 right-0 mx-auto py-6
+         sm:max-w-[780px]'>
           <ForecastDays>
           </ForecastDays>
         </div>
 
-        <div className='left-0 right-0 mx-auto'>
+        <div className='left-0 right-0 mx-auto sm:max-w-[780px]'>
           <HighlightsBox />
         </div>
       </div>

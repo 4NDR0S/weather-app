@@ -17,8 +17,9 @@ export default function HighlightsBox() {
     }
     return (
         <>
-            <h2 className='text-[#E7E7EB] font-bold text-[24px]'>Today's Highlights</h2>
-            <div className='flex flex-wrap gap-4'>
+            <h2 className='text-[#E7E7EB] font-bold text-[24px] py-6'>Today's Highlights</h2>
+            <div className='flex flex-wrap gap-8
+            sm:gap-14'>
                 <Wind/>
                 <Humidity/>
                 <Visibility/>

@@ -5,7 +5,7 @@ const idkey = '1207561af4bd33f3b574041404ab197e';
 const lat = '41.85';
 const lon = '-87.65';
 
-const city = 'arequipa'
+const city = 'madrid'
 
 export const DataContext = createContext();
 
