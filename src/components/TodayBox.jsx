@@ -54,7 +54,7 @@ export default function TodayBox() {
 
     return (
         <div className="font-raleway bg-[#1E213A] max-w-[640px] pb-6 h-[810px]
-        sm:w-[500px] sm:h-screen">
+        sm:w-[500px] sm:h-auto">
             <div className='p-4 flex justify-between'>
                 <div className='bg-[#6E707A] w-[160px] text-center'>
                     <button onClick={openModal} className='text-[#E7E7EB] py-2 cursor-pointer'>Search for places</button>
