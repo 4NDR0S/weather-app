@@ -1,14 +1,21 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { DataContext } from '../Context/DataProvider'
-import CurrentDay from './CurrentDay';
-import Modal from './Modal';
+import CurrentDay from './CurrentDay'
+import Modal from './Modal'
 
 const weatherBackGround = '/Cloud-background.png'
 
 
 export default function TodayBox() {
-    const { api, loading, error, unit } = useContext(DataContext);
+    const { api, loading, error, unit, updateLocation } = useContext(DataContext);
 
+    //estados para el modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+    //manejo de errores
     if (loading) {
         return <p>Cargando...</p>;
     }
@@ -26,18 +33,24 @@ export default function TodayBox() {
     // console.log(weather, name);
 
     // main.temp en un variable sin decimales
-    const tempEntero = Math.floor(main.temp);
+    const tempEntero = Math.floor(main.temp)
 
     // descripccion del clima
     const descriptionWeather = weather[0].main
 
 
-    //estados para el modal
-    const [isModalOpen, setIsModalOpen] = useState(false);
-
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
-
+    const handleLocationClick = () => {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition((position) => {
+                const { latitude, longitude } = position.coords;
+                updateLocation(latitude, longitude);
+            }, (error) => {
+                console.error("Error obteniendo la ubicación: ", error);
+            });
+        } else {
+            console.error("Geolocalización no es soportada por este navegador.");
+        }
+    }
 
     return (
         <div className="font-raleway bg-[#1E213A] max-w-[640px] pb-6 h-[810px]
@@ -52,7 +65,7 @@ export default function TodayBox() {
                     />
                 )}
                 <div className='bg-[#6E707A] h-[40px] rounded-full w-[40px]'>
-                    <button>
+                    <button onClick={handleLocationClick}>
                         <img src="/my_location.png" alt="my location icon" className='left-0 right-0 mx-auto p-2' />
                     </button>
                 </div>
