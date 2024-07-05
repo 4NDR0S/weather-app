@@ -1,6 +1,7 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { DataContext } from '../Context/DataProvider'
 import CurrentDay from './CurrentDay';
+import Modal from './Modal';
 
 const weatherBackGround = '/Cloud-background.png'
 
@@ -31,13 +32,25 @@ export default function TodayBox() {
     const descriptionWeather = weather[0].main
 
 
+    //estados para el modal
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
+
     return (
         <div className="font-raleway bg-[#1E213A] max-w-[640px] pb-6 h-[810px]
         sm:w-[500px] sm:h-screen">
             <div className='p-4 flex justify-between'>
                 <div className='bg-[#6E707A] w-[160px] text-center'>
-                    <button className='text-[#E7E7EB] py-2'>Search for places</button>
+                    <button onClick={openModal} className='text-[#E7E7EB] py-2 cursor-pointer'>Search for places</button>
                 </div>
+                {isModalOpen && (
+                    <Modal 
+                        closeModal = {closeModal}
+                    />
+                )}
                 <div className='bg-[#6E707A] h-[40px] rounded-full w-[40px]'>
                     <button>
                         <img src="/my_location.png" alt="my location icon" className='left-0 right-0 mx-auto p-2' />
