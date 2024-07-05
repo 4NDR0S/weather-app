@@ -33,14 +33,14 @@ export default function TodayBox() {
 
     return (
         <div className="font-raleway bg-[#1E213A] max-w-[640px] pb-6 h-[810px]
-        sm:w-[500px] sm:h-full">
+        sm:w-[500px] sm:h-screen">
             <div className='p-4 flex justify-between'>
                 <div className='bg-[#6E707A] w-[160px] text-center'>
                     <button className='text-[#E7E7EB] py-2'>Search for places</button>
                 </div>
                 <div className='bg-[#6E707A] h-[40px] rounded-full w-[40px]'>
                     <button>
-                        <img src="public/my_location.png" alt="my location icon" className='left-0 right-0 mx-auto p-2' />
+                        <img src="/my_location.png" alt="my location icon" className='left-0 right-0 mx-auto p-2' />
                     </button>
                 </div>
             </div>
@@ -60,7 +60,7 @@ export default function TodayBox() {
                 <CurrentDay />
                 
                 <div className='flex left-0 right-0 mx-auto justify-center py-4'>
-                    <img src="public/location.png" alt="" className='h-[18px] px-1' />
+                    <img src="/location.png" alt="" className='h-[18px] px-1' />
                     <span className='text-[#88869D] text-[15px]'>{name}</span>
                 </div>
             </div>

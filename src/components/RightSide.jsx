@@ -8,16 +8,23 @@ export default function RightSide() {
 
   return (
     <div className='bg-[#100E1D] w-full p-8 font-raleway
-    left-0 right-0 mx-auto 
-    flex flex-wrap justify-center
-    sm:w-full sm:px-[14%]'>
+    left-0 right-0 mx-auto'>
       <ButtonChangeTemp />
-      <div className=''>
-        <ForecastDays>
-        </ForecastDays>
+
+      <div className=' left-0 right-0 mx-auto
+      flex flex-wrap justify-center
+    sm:w-full sm:px-[14%]'>
+
+        <div className='left-0 right-0 mx-auto'>
+          <ForecastDays>
+          </ForecastDays>
+        </div>
+
+        <div className='left-0 right-0 mx-auto'>
+          <HighlightsBox />
+        </div>
       </div>
 
-      <HighlightsBox/>
     </div>
   )
 }

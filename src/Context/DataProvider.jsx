@@ -5,20 +5,25 @@ const idkey = '1207561af4bd33f3b574041404ab197e';
 const lat = '41.85';
 const lon = '-87.65';
 
+const city = 'arequipa'
+
 export const DataContext = createContext();
 
 export default function DataProvider({ children }) {
-    const [unit, setUnit] = useState('imperial'); // Estado para la unidad (imperial o metric)
+    const [unit, setUnit] = useState('imperial'); // Estado para la unidad (imperial(°F) o metric(°C))
     const [api, setApi] = useState({});
     const [forecastApi, setForecastApi] = useState({});
+    
 
+    //prevencion de errores
     const [loading, setLoading] = useState(true);
     const [forecastLoading, setForecastLoading] = useState(true);
     const [error, setError] = useState(null);
     const [forecastError, setForecastError] = useState(null);
 
     const getData = async (unit) => {
-        const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${idkey}&units=${unit}`;
+        // const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${idkey}&units=${unit}`;
+        const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${idkey}&units=${unit}`
         try {
             const rs = await fetch(url);
             if (!rs.ok) throw new Error('La respuesta de la red no fue satisfactoria');
@@ -34,7 +39,8 @@ export default function DataProvider({ children }) {
     };
 
     const getForecastData = async (unit) => {
-        const url_fore = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${idkey}&units=${unit}`;
+        // const url_fore = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${idkey}&units=${unit}`;
+        const url_fore = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${idkey}&units=${unit}`;
         try {
             const rs = await fetch(url_fore);
             if (!rs.ok) throw new Error('La respuesta de la red no fue satisfactoria');
