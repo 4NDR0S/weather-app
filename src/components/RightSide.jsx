@@ -3,6 +3,7 @@ import { DataContext } from '../Context/DataProvider'
 import ForecastDays from './ForecastDays'
 import ButtonChangeTemp from './ButtonChangeTemp';
 import HighlightsBox from './HighlightsBox';
+import Footer from './Footer';
 
 export default function RightSide() {
 
@@ -25,7 +26,7 @@ export default function RightSide() {
           <HighlightsBox />
         </div>
       </div>
-
+      <Footer/>
     </div>
   )
 }
